@@ -11,6 +11,9 @@
 const config = () => {
     return {
         
+        // encoding
+        ENCODING_DEFAULT: 'utf8',
+        
         // log file
         log_file_dir: 'C:\\dev\\pixelator\\pixelator\\_logs',
         log_file_name_format: 'yyyyMMdd',
@@ -21,7 +24,7 @@ const config = () => {
         log_message_prefix_format: 'yyyyMMdd-hhmmss⏩▶',
 
         // console
-        always_write_to_console: true,
+        always_write_to_console: false,
     };
 };
 

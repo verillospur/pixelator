@@ -19,6 +19,4 @@ const createDir = (dirPath) => {
     }
 };
 
-module.exports = {
-  create: createDir
-};
+module.exports = createDir;

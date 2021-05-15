@@ -1,10 +1,10 @@
 // 
 //  app.js
-//  ~/
+//  ~/pixelator/
 // 
-//  created:    2021-05-08
+//  created:    2021-05-14
 // 
-//  app entry point
+//  intention is that this is the core engine - to take over from ~/app.js
 // 
 'use strict';
 
@@ -22,7 +22,6 @@ const WEIGHT_YELLLOW = config.pixelator.WEIGHT_YELLLOW;
 const { startOfWeek } = require('date-fns');
 const { randomInt } = require('./framework/randomiser');
 
-// weirdness? create the app then run it...? guess so...
 const app = () => {
 
 	log.log("Calling app()", logLevels.Debug);
@@ -32,7 +31,7 @@ const app = () => {
 	const canvas = createCanvas(IMAGE_WIDTH, IMAGE_HEIGHT);
 	const ctx = canvas.getContext('2d');
 
-	const stats = {
+    const stats = {
 		reds: 0,
 		greens: 0,
 		blues: 0,
@@ -58,6 +57,8 @@ const app = () => {
 		// const b = rndInt(0, 255);
 		// const a = rndInt(150, 255);
 
+		let img_data = [];
+
 		let rb = false,
 			gb = false,
 			bb = false,
@@ -65,55 +66,27 @@ const app = () => {
 
 		// weight red
 		if (WEIGHT_RED) {
-			rb = rndBool();
-			if (!rb) {
-				gb = rndBool();
-				if (!gb) {
-					bb = rndBool();
-					if (!bb) yb = true;
-				}
-			}
+			const red_weight_influ = require('./red-influencer');
+			img_data = red_weight_influ.influencer();
 		}
 
 		// weight green
 		if (WEIGHT_GREEN) {
-			gb = rndBool();
-			if (!gb) {
-				bb = rndBool();
-				if (!bb) {
-					rb = rndBool();
-					if (!rb) yb = true;
-				}
-			}
+			const green_weight_influ = require('./green-influencer');
+			img_data = green_weight_influ.influencer();
 		}
 
 		// weight blue
 		if (WEIGHT_BLUE) {
-			bb = rndBool();
-			if (!bb) {
-				rb = rndBool();
-				if (!rb) {
-					gb = true;
-					if (!gb) yb = true;
-				}
-			}
+			const blue_weight_influ = require('./blue-influencer');
+			img_data = blue_weight_influ.influencer();
 		}
 
 		// weight yellow
 		if (WEIGHT_YELLLOW) {
-			yb = rndBool();
-			if (!yb) {
-				rb = rndBool();
-				if (!rb) {
-					gb = rndBool();
-					if (!gb) bb = true;
-				}
-			}
+			const yellow_weight_influ = require('./yellow-influencer');
+			img_data = yellow_weight_influ.influencer();
 		}
-
-		// const rb = rndBool();
-		// const gb = rndBool();
-		// const bb = rndBool();
 
 		// declare colour vars
 		let g = 0;
@@ -133,10 +106,10 @@ const app = () => {
 		}
 		const a = 255;
 
-		imageData.data[i + 0] = r;       // R
-		imageData.data[i + 1] = g;       // G
-		imageData.data[i + 2] = b;       // B
-		imageData.data[i + 3] = a;       // A
+		imageData.data[i + 0] = img_data.r;       // R
+		imageData.data[i + 1] = img_data.g;       // G
+		imageData.data[i + 2] = img_data.b;       // B
+		imageData.data[i + 3] = img_data.a;       // A
 
 		// record stats
 		if (rb) stats.reds += 1;

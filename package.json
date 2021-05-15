@@ -4,7 +4,8 @@
   "description": "Pixelator",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "node test.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   "homepage": "https://github.com/verillospur/pixelator#readme",
   "dependencies": {
     "canvas": "^2.7.0",
-    "date-fns": "^2.21.3"
+    "date-fns": "^2.21.3",
+    "prompt": "^1.1.0",
+    "random": "^3.0.6"
   }
 }

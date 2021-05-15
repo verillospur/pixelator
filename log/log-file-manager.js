@@ -8,9 +8,13 @@
 // 
 'use strict';
 
-const config = require('../config');
-
 const checkAll = () => {
+
+  const log = require('../log');
+  const config = require('../config');
+
+  // log.debugCall(__filename, "checkAll", [], '');
+  // log.log(__filename); // CAN'T CALL LOG!! CAIUSES INFINITE CALL STACK LOOP
 
   // check directory
   const dirCheck = require('./check-dir');
@@ -21,10 +25,9 @@ const checkAll = () => {
   const fname = nameCheck.checkCurrent();
 
   // check directory exists
-  const dirExists = require('../framework/filesystem/checkexists-dir');
-  if (!dirExists.checkExists(dirPath)) {
-    const creater = require('../framework/filesystem/createdir');
-    creater.create(dirPath);
+  const framework = require('../framework');
+  if (!framework.filesystem.checkExists(dirPath)) {
+    framework.filesystem.createDir(dirPath);
   }
 
   // build path
@@ -32,11 +35,11 @@ const checkAll = () => {
   const filePath = `${dirPath}${sep}${fname}`;
 
   // check file exists
-  const fileExists = require('../framework/filesystem/checkexists-file');
-  if (!fileExists.checkExists(filePath)) {
-    const creater = require('../framework/filesystem/createfile');
-    creater.create(filePath);
+  if (!framework.filesystem.checkExists(filePath)) {
+    framework.filesystem.createFile(filePath);
   }
+
+  
   
 
   // store the filepath

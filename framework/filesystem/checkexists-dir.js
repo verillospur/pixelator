@@ -8,12 +8,17 @@
 // 
 'use strict';
 
-const checker = require('./checkexists');
+// const filesystem = require('./filesystem');
 
-const check = (dirPath) => {
-    return checker.checkExists(dirPath);
+// const checkExistsDir = (dirPath) => {
+//     return filesystem.checkExists(dirPath);
+// };
+
+const checkExistsDir = (dirPath) => {
+    const checkExists = require('./checkexists');
+    return checkExists(dirPath);
 };
 
-module.exports = {
-  checkExists: check
-}
+
+
+module.exports = checkExistsDir;

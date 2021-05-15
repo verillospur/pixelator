@@ -9,8 +9,9 @@
 'use strict';
 
 const fs = require('fs');
+const { check } = require('../../log/log-file-manager');
 
-const check = (path) => {
+const checkExists = (path) => {
 
     let exists = false;
 
@@ -21,6 +22,4 @@ const check = (path) => {
     return exists;
 };
 
-module.exports = {
-  checkExists: check
-}
+module.exports = checkExists;

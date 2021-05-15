@@ -10,10 +10,8 @@
 
 const checker = require('./checkexists');
 
-const check = (filePath) => {
-    return checker.checkExists(filePath);
+const checkExistsFile = (filePath) => {
+    return checker(filePath);
 };
 
-module.exports = {
-  checkExists: check
-}
+module.exports = checkExistsFile;

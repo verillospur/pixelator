@@ -8,27 +8,45 @@
 // 
 'use strict';
 
-const write = (content, filePath, options) => {
+const appendToFile = (content, filePath, options) => {
+
+    const log = require('../../log');
+    const config = require('../../config')
+    const fs = require('fs');
+    
+    // --------------------------------------------------------------------
+    log.debugCall(__filename, "appendToFile", `
+    "content": ${content}\n"filepath": ${filePath}\n"options": ${options}`
+    );
+    // --------------------------------------------------------------------
 
     // check it exists
     const checker = require('./checkexists');
-    checker.checkExists(filePath);
+    if (checker(filePath)) {
 
-    // lock file
-    // todo
+        // lock file
+        // todo
 
-    // check options
-    options = options || 'a';
+        // check options
+        options = options || 'a';
 
-    // write to file
-    const fs = require('fs');
-    fs.appendFileSync( filePath, content, { flag: options } );
+        // write to file
+        try {
+            fs.appendFileSync(filePath, content, { flag: config.framework.filesystem.FILE_WRITE_OPTIONS });
+        }
+        catch (ex) {
+            onsole.log(ex);
+        }
 
-    // unlock file
-    // todo
+        // unlock file
+        // todo
+
+    }
+    else {
+        fs.appendFileSync(filePath, content, config.ENCODING_DEFAULT);
+        // fs.writeFileSync(filePath, content, config.framework.filesystem.ENCODING_DEFAULT );
+    }
 
 };
 
-module.exports = {
-  append: write
-};
+module.exports = appendToFile;
