@@ -22,8 +22,8 @@ const config = () => {
         OUTPUT_FILE: 'C:\\dev\\pixelator\\output.html',
 
         // defaults
-        IMAGE_WIDTH: 450,
-        IMAGE_HEIGHT: 200,
+        IMAGE_WIDTH: 400,
+        IMAGE_HEIGHT: 250,
 
         // unused?
         WEIGHT_RED: false,
@@ -31,10 +31,10 @@ const config = () => {
         WEIGHT_BLUE: false,
         WEIGHT_YELLLOW: true, 
         
-        PERCENT_WEIGHT_RED: 40,
+        PERCENT_WEIGHT_RED: 0,//40,
         PERCENT_WEIGHT_GREEN: 23,
         PERCENT_WEIGHT_BLUE: 23,
-        PERCENT_WEIGHT_YELLOW: 14,
+        PERCENT_WEIGHT_YELLOW: 54,//14,
 
     };
 };

@@ -10,19 +10,20 @@
 
 const g_config = require('../config');
 const config = g_config;
+//const log = require('./log');
 const levels = require('./log-levels');
 const defaults = require('./default-log-levels');
 const framework = require('../framework/framework');
 
 const log = (msg, level = defaults.default) => {
 
-  // // check level
+  // check level
   level = defaults.default;
   if (!level || level === undefined) {
     level = defaults.default;
   }
 
-  // // check directory and file 
+  // check directory and file 
   const fileman = require('./log-file-manager');
   const filepath = fileman.check();
 
@@ -41,8 +42,8 @@ const log = (msg, level = defaults.default) => {
     fs.writeFileSync(finalMsg, filepath);
     try {
       fs.writeFileSync(finalMsg, filepath);
-    }
-    catch (_ex) { }
+    } 
+    catch (_ex) {}
   }
 
   // console write?

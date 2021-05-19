@@ -21,7 +21,7 @@ const config = () => {
         log_file_path_seperator: '\\',
 
         // messages
-        log_message_prefix_format: 'yyyyMMdd-hhmmss⏩▶',
+        log_message_prefix_format: 'yyyyMMdd-hhmmss⏩▶ ',
 
         // console
         always_write_to_console: false,

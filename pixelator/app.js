@@ -63,6 +63,8 @@ const root = () => {
 		const blue_percent = config.pixelator.PERCENT_WEIGHT_BLUE;
 		const yellow_percent = config.pixelator.PERCENT_WEIGHT_YELLOW;
 
+		// test 0%s here
+
 		const red_percent_n = red_percent;
 		const green_percent_n = green_percent;
 		const blue_percent_n = blue_percent;
