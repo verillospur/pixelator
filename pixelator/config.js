@@ -1,6 +1,6 @@
 // 
 //  config.js
-//  ~/config/
+//  ~/config/pixelator/
 // 
 //  created:    2021-05-06
 // 
@@ -24,10 +24,17 @@ const config = () => {
         // defaults
         IMAGE_WIDTH: 450,
         IMAGE_HEIGHT: 200,
+
+        // unused?
         WEIGHT_RED: false,
         WEIGHT_GREEN: false,
         WEIGHT_BLUE: false,
         WEIGHT_YELLLOW: true, 
+        
+        PERCENT_WEIGHT_RED: 40,
+        PERCENT_WEIGHT_GREEN: 23,
+        PERCENT_WEIGHT_BLUE: 23,
+        PERCENT_WEIGHT_YELLOW: 14,
 
     };
 };
