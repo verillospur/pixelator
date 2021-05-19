@@ -24,10 +24,10 @@ const config = () => {
         // defaults
         IMAGE_WIDTH: 450,
         IMAGE_HEIGHT: 200,
-        WEIGHT_RED: true,
+        WEIGHT_RED: false,
         WEIGHT_GREEN: false,
         WEIGHT_BLUE: false,
-        WEIGHT_YELLLOW: false, 
+        WEIGHT_YELLLOW: true, 
 
     };
 };

@@ -8,6 +8,37 @@
 // 
 'use strict';
 
+
+// get framework stuff
+const log = require('../log');
+const logLevels = require('../log/log-levels');
+const config = require('../config')
+const framework = require('../framework');
+
+// get image attribs from config
+const IMAGE_WIDTH = config.pixelator.IMAGE_WIDTH;
+const IMAGE_HEIGHT = config.pixelator.IMAGE_HEIGHT;
+
+// create a pixel map - just an array with an element per pixel
+const newPixelObj = require('./new-pixel-obj');
+const pixel_map = require('./pixel-map').newmap(IMAGE_WIDTH, IMAGE_HEIGHT);
+for (let x = 0; y < IMAGE_WIDTH - 1; x++) {
+	for (let y = 0; x < IMAGE_HEIGHT - 1; y++) {
+		const pixel = newPixelObj(x, y, IMAGE_WIDTH, IMAGE_HEIGHT);
+		pixel_map.addNext(pixel);
+	}
+}
+
+process.exit(0);
+
+
+const pixapp = require('./pixelator/app');
+pixapp();
+
+process.exit(0);
+
+/*
+
 const log = require('./log');
 const logLevels = require('./log/log-levels');
 const config = require('./config')
@@ -151,7 +182,7 @@ const app = () => {
 		// 	, imageData.data[i + 2]
 		// 	, imageData.data[i + 3]
 		// ]
-		// 
+		//
 		//log.log(`imageData{${i}}:${ma}`);
 	}
 	ctx.putImageData(imageData, 0, 0);
@@ -172,3 +203,5 @@ module.exports = app;
 // 	(err, result) => )
 // );
 app();
+
+*/
