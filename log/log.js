@@ -1,9 +1,10 @@
 // 
 //  log.js 
-//  ~/lof/ 
+//  ~/log/ 
 // 
-//  created:    05/01/2021 
-// 
+//  created:    2021-01-05
+//  modified:   2021-06-13
+//
 //  application log
 // 
 'use strict';
@@ -15,6 +16,11 @@ const defaults = require('./default-log-levels');
 const framework = require('../framework/framework');
 
 const log = (msg, level = defaults.default) => {
+  
+  const process = require('process');
+  const child_process = require('child_process');
+  const comp = child_process.fork(`${__dirname}/_log`);
+  comp.send()
 
   // // check level
   level = defaults.default;
